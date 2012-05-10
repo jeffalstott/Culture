@@ -50,7 +50,7 @@ for fname in dirList:
     location = f.attrs['location']
     date = f.attrs['date']
 #    sensor_type = f.attrs['sensor_type']
-    sensor_type = 'MEG'
+    sensor_type = 'MEA'
 
     subject = session.query(db.Subject).\
             filter_by(species=species, group_name=group_name, name=number_in_group).first()
