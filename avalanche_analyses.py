@@ -8,7 +8,7 @@ session = Session()
 python_location= '/usr/local/Python/2.7.2/bin/python'
 
 analyses = avalanches.Analyses(database_url, verbose=False)
-analyses.time_scales = ['optimal', 'mean_iei', 1, 2, 4, 8, 16, 32]
+analyses.time_scales = ['optimal',]# 'mean_iei', 1, 2, 4, 8, 16, 32]
 analyses.threshold_mode = 'Likelihood'
 analyses.threshold_levels = [2.0, 5.0, 10.0]
 analyses.threshold_directions = ['both']
@@ -19,7 +19,7 @@ analyses.cascade_methods = ['grid']
 analyses.spatial_samples = [('all', 'all')]
 analyses.temporal_samples = [('all', 'all')]
 
-
+memory_requirement = 72
 sampling_rate = 4000.0
 ds_rate = 1000.0
 
@@ -146,6 +146,10 @@ for fname in dirList:
 
             analyses.filename = f.file.filename
             analyses.HDF5_group = base_filtered+'/'+band
-            analyses.submit(filter.id, memory_requirement=8, write_event_fits=False)
+            analyses.submit(filter.id, memory_requirement=memory_requirement, write_event_fits=False)
+#            break
+#        break
+#    break
+
 session.close()
 session.bind.dispose()
